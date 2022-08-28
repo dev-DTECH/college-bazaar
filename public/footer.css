@@ -1,12 +1,14 @@
 body{
     padding: 0;
     margin:0;
+    min-height:100vh;
 }
 *{
     box-sizing: border-box;
 }
 .site-footer
 {
+  margin-top: auto;
   background-color:#1e1123;
   padding:45px 0 20px;
   font-size:15px;
