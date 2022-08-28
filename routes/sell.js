@@ -7,7 +7,18 @@ const database = require("../database");
 const path = require("path");
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render('sell')
+    database.query(`select * from user where email ='${req.session.user_id}';`, function (err, data) {
+        if (err) {
+            console.error(err);
+        } else
+        {
+            if(!data[0].blacklist)
+                res.render('sell')
+            else
+                res.send("You are Blacklisted from selling")
+        }
+
+    })
 });
 
 const storage = multer.diskStorage({
