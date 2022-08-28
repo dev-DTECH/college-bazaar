@@ -1,0 +1,173 @@
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Sell</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--    <form method="post" action="sell/add" enctype="multipart/form-data">-->
+<!--        <input type="text" name="product_name">-->
+<!--        <input type="text" name="product_desc">-->
+<!--        <input type="number" name="product_price">-->
+
+<!--        <input type="file" name="product_image">-->
+<!--        <input type="submit" value="Submit">-->
+<!--    </form>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/sell.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+          integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+            href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAA/4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAAAAAAQEAAAAAAQAAAQAAAAAAAQAAAQAAAAEAAAEBAQEBAQEAAAEAAQAAAQEAAAAAAAAAAQEAAAAAAAEAAAAAAAAAAAAAAAABAAEBAQEBAQEBAQEBAQAAAAABAAAAAQAAAAEAAAEAAAEAAQAAAAEAAAABAAAAAQAAAAEBAQEBAQEBAQEBAQEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAAEAAAEBAQEBAQEBAQEBAQEBAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAABAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOfzAADb7QAA2A0AAGfzAADv/wAAQAMAAN3bAABd3QAAwAEAAN3dAADd3gAAwAAAAN//AADf/wAAH/8AAP//AAA="
+            rel="icon" type="image/x-icon" />
+    <title>Sell | College Bazar</title>
+</head>
+
+<body>
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-header">
+            <h1>Sell your product</h1>
+
+            <form class="sell-form" method="post" action="sell/add" enctype="multipart/form-data">
+                <div class="image-container">
+                    <img src="" id="image-preview" alt="" style="display: none;">
+                    <div class="upload-container">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                    d="M11 5C11 4.44772 11.4477 4 12 4C12.5523 4 13 4.44772 13 5V12.1578L16.2428 8.91501L17.657 10.3292L12.0001 15.9861L6.34326 10.3292L7.75748 8.91501L11 12.1575V5Z"
+                                    fill="currentColor" />
+                            <path
+                                    d="M4 14H6V18H18V14H20V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V14Z"
+                                    fill="currentColor" />
+                        </svg>
+                        <p>Select a Image or Drag here</p>
+                        <input type="file" name="product_image" onchange="onFileSelected(event)" id="product-image"
+                               style="display: none;" required/>
+                        <label for="product-image">Select a file</label>
+                    </div>
+                </div>
+                <div class="text-input-container">
+                    <div class="wrap-input100 validate-input ">
+                        <input class="input100" type="text" name="product_name" id="product-name"
+                               placeholder=" Product Name" required>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
+                                     clip-rule="evenodd">
+                                    <path
+                                            d="M11.5 23l-8.5-4.535v-3.953l5.4 3.122 3.1-3.406v8.772zm1-.001v-8.806l3.162 3.343 5.338-2.958v3.887l-8.5 4.534zm-10.339-10.125l-2.161-1.244 3-3.302-3-2.823 8.718-4.505 3.215 2.385 3.325-2.385 8.742 4.561-2.995 2.771 2.995 3.443-2.242 1.241v-.001l-5.903 3.27-3.348-3.541 7.416-3.962-7.922-4.372-7.923 4.372 7.422 3.937v.024l-3.297 3.622-5.203-3.008-.16-.092-.679-.393v.002z" />
+                                </svg>
+                            </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input">
+                        <input type="text" class="input100" name="product_desc" placeholder="Description">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                                <img src="/img/description.svg" alt="desc">
+                            </span>
+                    </div>
+                    <div class="wrap-input100 validate-input ">
+                        <select class="input100" type="" name="product_category" id="product-price" value="category"
+                                placeholder="Category" style="font-weight: none;" required>
+                            <option value="category">Category</option>
+                            <option value="shirt">Shirt</option>
+                            <option value="trouser">Trouser</option>
+                            <option value="bicycle">Bicycle</option>
+                            <option value="backpack">Backpack</option>
+                            <option value="water bottle">Water bottle</option>Bottles</option>
+                            <option value="book">Book</option>
+                            <option value="blue earphone">Bluetooth Earphone</option>
+                            <option value="study material">Notes and Study Material</option>
+                            <option value="laptop">Laptop</option>
+                            <option value="others">others</option>
+                        </select>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                                <img src="/img/category.svg" alt="category">
+                            </span>
+                    </div>
+                    <div class="wrap-input100 validate-input " data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="number" name="product_price" id="product-price"
+                               placeholder="Price" required>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                    <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+                                    <path
+                                            d="M308 96c6.627 0 12-5.373 12-12V44c0-6.627-5.373-12-12-12H12C5.373 32 0 37.373 0 44v44.748c0 6.627 5.373 12 12 12h85.28c27.308 0 48.261 9.958 60.97 27.252H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h158.757c-6.217 36.086-32.961 58.632-74.757 58.632H12c-6.627 0-12 5.373-12 12v53.012c0 3.349 1.4 6.546 3.861 8.818l165.052 152.356a12.001 12.001 0 0 0 8.139 3.182h82.562c10.924 0 16.166-13.408 8.139-20.818L116.871 319.906c76.499-2.34 131.144-53.395 138.318-127.906H308c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-58.69c-3.486-11.541-8.28-22.246-14.252-32H308z" />
+                                </svg>
+                            </span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Submit
+                        </button>
+                    </div>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    //     document.getElementById('#product-image').onchange = function (evt) {
+    // var tgt = evt.target || window.event.srcElement,
+    //     files = tgt.files;
+
+    // // FileReader support
+    // if (FileReader && files && files.length) {
+    //     var fr = new FileReader();
+    //     fr.onload = function () {
+    //         document.querySelector('.image-preview').src = fr.result;
+    //     }
+    //     fr.readAsDataURL(files[0]);
+    // }
+
+    // // Not supported
+    // else {
+    //     // fallback -- perhaps submit the input to an iframe and temporarily store
+    //     // them on the server until the user's session ends.
+    // }
+    function onFileSelected(event) {
+        var selectedFile = event.target.files[0];
+        var reader = new FileReader();
+
+        var imgtag = document.querySelector("#image-preview");
+        imgtag.title = selectedFile.name;
+
+        reader.onload = function (event) {
+            imgtag.src = event.target.result;
+            imgtag.style.display = "block";
+        };
+
+        reader.readAsDataURL(selectedFile);
+    }
+
+</script>
+</body>
+
+</html>

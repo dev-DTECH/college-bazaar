@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/footer.css">
+
+    <link
+            href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAA/4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAAAAAAQEAAAAAAQAAAQAAAAAAAQAAAQAAAAEAAAEBAQEBAQEAAAEAAQAAAQEAAAAAAAAAAQEAAAAAAAEAAAAAAAAAAAAAAAABAAEBAQEBAQEBAQEBAQAAAAABAAAAAQAAAAEAAAEAAAEAAQAAAAEAAAABAAAAAQAAAAEBAQEBAQEBAQEBAQEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAAEAAAEBAQEBAQEBAQEBAQEBAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAABAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOfzAADb7QAA2A0AAGfzAADv/wAAQAMAAN3bAABd3QAAwAEAAN3dAADd3gAAwAAAAN//AADf/wAAH/8AAP//AAA="
+            rel="icon" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+          integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Product List | College Bazaar</title>
+</head>
+
+<body>
+<nav id="navbar">
+    <a id="logo" href="/">
+        <img src="/img/logo.png" alt="Logo" height="100">
+        <h3 id="logo-text">College Bazaar</h3>
+    </a>
+    <form action="search" id="search-box">
+        <input id="search-input" name="query" type="search" placeholder="Search...">
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+    <div id="nav-links">
+        <% if(session.admin){%>
+            <a href="/admin">Admin</a>
+        <%}%>
+        <a href="/logout">Log Out</a>
+        <a href="/sell">Sell Item</a>
+    </div>
+</nav>
+<!--<header>-->
+<!--    <div class="container">-->
+<!--        <div class="logo">-->
+<!--            <a href="/"><img src="/img/logo.png" alt="logo"></a>-->
+<!--        </div>-->
+<!--        <div class="heading">-->
+<!--            <h1>College Bazaar</h1>-->
+<!--        </div>-->
+<!--        <form action="search" class="searchBox">-->
+<!--            <input class="searchInput" type="text" name="" placeholder="Search">-->
+<!--            <button class="searchButton" type="submit" href="#">-->
+<!--                <i class="fa-solid fa-magnifying-glass"></i>-->
+<!--            </button>-->
+<!--        </form>-->
+<!--        <div class="logout">-->
+<!--            <button class="BUTTON">-->
+<!--                Log Out-->
+<!--            </button>-->
+<!--        </div>-->
+<!--        <div class="sell">-->
+<!--            <button class="button">-->
+<!--                Sell Item-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+<div class="body-container">
+    <div class="panel">
+        <form class="filter">
+            <div class="sort">
+                <h5 class="header">Sort By :</h5>
+                <select name="s" autocomplete="off" id="s-result-sort-select" tabindex="0"
+                        data-action="a-dropdown-select" class="a-native-dropdown a-declarative" aria-pressed="false">
+
+                    <option
+                            data-url="/s?k=backpack+adidas+for+men&amp;s=relevanceblender&amp;crid=2Y4U90KL0Y6JD&amp;qid=1661675120&amp;sprefix=%2Caps%2C368&amp;ref=sr_st_relevanceblender&amp;ds=v1%3AkFZne5kCT3UO2RqwnY2yhJUN8mKNTry6zNdE0lX81m0"
+                            value="relevanceblender" selected="">Featured
+                    </option>
+                    <option
+                            data-url="/s?k=backpack+adidas+for+men&amp;s=price-asc-rank&amp;crid=2Y4U90KL0Y6JD&amp;qid=1661675120&amp;sprefix=%2Caps%2C368&amp;ref=sr_st_price-asc-rank&amp;ds=v1%3A2vUOaMY3UqV%2BLj8kLGe6YmSzjENdjnLrLPyAO%2BlR%2BRw"
+                            value="price-asc-rank">Price: Low to High
+                    </option>
+                    <option
+                            data-url="/s?k=backpack+adidas+for+men&amp;s=price-desc-rank&amp;crid=2Y4U90KL0Y6JD&amp;qid=1661675120&amp;sprefix=%2Caps%2C368&amp;ref=sr_st_price-desc-rank&amp;ds=v1%3AH%2F7YOeXXk9TETWR7JLO0Oq7r77VSxCLAmAP%2FejI7Rc8"
+                            value="price-desc-rank">Price: High to Low
+                    </option>
+                    <option
+                            data-url="/s?k=backpack+adidas+for+men&amp;s=review-rank&amp;crid=2Y4U90KL0Y6JD&amp;qid=1661675120&amp;sprefix=%2Caps%2C368&amp;ref=sr_st_review-rank&amp;ds=v1%3AEeXflzoKnuZnfTLhfQ2sPnefvXBrABCqmZog%2BjusFEk"
+                            value="review-rank">Avg. Customer Review
+                    </option>
+                    <option
+                            data-url="/s?k=backpack+adidas+for+men&amp;s=date-desc-rank&amp;crid=2Y4U90KL0Y6JD&amp;qid=1661675120&amp;sprefix=%2Caps%2C368&amp;ref=sr_st_date-desc-rank&amp;ds=v1%3AxY4mVo0qN1vHeEeB%2FHu1m7zT60KqpSMe8mAtXF38bUc"
+                            value="date-desc-rank">Newest Arrivals
+                    </option>
+
+                </select>
+            </div>
+            <div class="price">
+                <h5>
+                    Price
+                </h5>
+                <ul>
+                    <li class="pricerange">
+                        <a href="#">₹600 to ₹1000</a>
+                    </li>
+                    <li class="pricerange">
+                        <a href="#">₹1000 to ₹1500</a>
+                    </li>
+                    <li class="pricerange">
+                        <a href="#">₹1500 to ₹3000</a>
+                    </li>
+                    <li class="pricerange">
+                        <a href="#">₹3000 to ₹5000</a>
+                    </li>
+                </ul>
+                <div class="wrapper">
+                    <input type="text" maxlength="9" id="low-price" placeholder="Min" name="low-price" class="min">
+                    <input type="text" maxlength="9" id="high-price" placeholder="Max" name="high-price"
+                           class="min">
+                    <input type="button" class="min2" value="Go">
+                </div>
+            </div>
+        </form>
+        <div class="rating">
+            <h4 class="ratingheader">Customer Reviews</h4>
+            <ul style="list-style: none" class="gay">
+                <a href="#" class="rate" style="text-decoration: none;">
+                    <li class="li">
+                        <span><i class="fa-solid fa-star"></i></span><span><i
+                                    class="fa-solid fa-star"></i></span><span><i
+                                    class="fa-solid fa-star"></i></span><span><i
+                                    class="fa-solid fa-star"></i></span><span><i class="fa-regular fa-star"></i></span>
+                        <small style="color: black;">& Up</small>
+                    </li>
+                </a>
+                <a href="#" class="rate" style="text-decoration: none;">
+                    <li class="li">
+                        <span><i class="fa-solid fa-star"></i></span><span><i
+                                    class="fa-solid fa-star"></i></span><span><i
+                                    class="fa-solid fa-star"></i></span><span><i
+                                    class="fa-regular fa-star"></i></span><span><i
+                                    class="fa-regular fa-star"></i></span>
+                        <small style="color: black;">& Up</small>
+                    </li>
+                </a>
+                <a href="#" class="rate" style="text-decoration: none;">
+                    <li class="li">
+                        <span><i class="fa-solid fa-star"></i></span><span><i
+                                    class="fa-solid fa-star"></i></span><span><i
+                                    class="fa-regular fa-star"></i></span><span><i
+                                    class="fa-regular fa-star"></i></span><span><i
+                                    class="fa-regular fa-star"></i></span>
+                        <small style="color: black;">& Up</small>
+                    </li>
+                </a>
+                <a href="#" class="rate" style="text-decoration: none;">
+                    <li class="li">
+                        <span><i class="fa-solid fa-star"></i></span><span><i
+                                    class="fa-regular fa-star"></i></span><span><i
+                                    class="fa-regular fa-star"></i></span><span><i
+                                    class="fa-regular fa-star"></i></span><span><i
+                                    class="fa-regular fa-star"></i></span>
+                        <small style="color: black;">& Up</small>
+                    </li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <div class="searchedItem">
+        <div class="details2">
+            <h3 class="searchedheading">Results</h3>
+            <p class="searchedP">Price and Other details may vary based on product size and color.</p>
+        </div>
+        <ul class="listorder">
+            <% for(var i = 0; i < products.length; i++){ %>
+                <li class="product">
+                    <a href="#gay" class="product-link">
+                        <div class="product-container">
+                            <div class="picture-container">
+                                <div class="picture">
+
+                                    <img src="/product/img/<%= products[i].id %>" alt="bottle">
+                                </div>
+                                <div class="like">
+                                    <button>
+                                        <i class="fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="details">
+                                <small>
+                                    Sponsored
+                                </small><span><i class="fa-solid fa-circle-info"></i></span>
+                                <p><%= products[i].name %></p>
+                                <h5>
+                                    <i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<span><%= products[i].price %></span>
+                                </h5>
+                                <p><%= products[i].desc %></p>
+                                <% if(session.admin){ %><a
+                                        href="?id=<%= products[i].id %>&approve=0">Delete</a>
+                                <% } %>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+        <!--        <ul class="listorder">-->
+
+        <!--            <li class="product">-->
+        <!--                <a href="#gay" class="product-link">-->
+        <!--                    <div class="product-container">-->
+        <!--                        <div class="picture-container">-->
+        <!--                            <div class="picture">-->
+        <!--                                <img src="trouser.webp" alt="Trouser">-->
+        <!--                            </div>-->
+        <!--                            <div class="like">-->
+        <!--                                <button>-->
+        <!--                                    <i class="fa-regular fa-heart"></i>-->
+        <!--                                </button>-->
+
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                        <div class="details">-->
+        <!--                            <small>-->
+        <!--                                Sponsored-->
+        <!--                            </small><span><i class="fa-solid fa-circle-info"></i></span>-->
+        <!--                            <p>HUDSON Men's Blake Slim Straight Leg Twill Pant</p>-->
+        <!--                            <h5><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<span>560</span></h5>-->
+        <!--                            <p>Punjab,Lahore</p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </a>-->
+        <!--            </li>-->
+        <!--            <li class="product">-->
+        <!--                <a href="#gay" class="product-link">-->
+        <!--                    <div class="product-container">-->
+        <!--                        <div class="picture-container">-->
+        <!--                            <div class="picture">-->
+        <!--                                <img src="bottle.webp" alt="bottle">-->
+        <!--                            </div>-->
+        <!--                            <div class="like">-->
+        <!--                                <button>-->
+        <!--                                    <i class="fa-regular fa-heart"></i>-->
+        <!--                                </button>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                        <div class="details">-->
+        <!--                            <small>-->
+        <!--                                Sponsored-->
+        <!--                            </small><span><i class="fa-solid fa-circle-info"></i></span>-->
+        <!--                            <p>Triple Insulated Stainless Steel Water Bottle 17 Ounce</p>-->
+        <!--                            <h5><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<span>560</span></h5>-->
+        <!--                            <p>Punjab,Lahore</p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </a>-->
+        <!--            </li>-->
+        <!--            <li class="product">-->
+        <!--                <a href="#gay" class="product-link">-->
+        <!--                    <div class="product-container">-->
+        <!--                        <div class="picture-container">-->
+        <!--                            <div class="picture">-->
+        <!--                                <img src="trouser.webp" alt="Trouser">-->
+        <!--                            </div>-->
+        <!--                            <div class="like">-->
+        <!--                                <button>-->
+        <!--                                    <i class="fa-regular fa-heart"></i>-->
+        <!--                                </button>-->
+
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                        <div class="details">-->
+        <!--                            <small>-->
+        <!--                                Sponsored-->
+        <!--                            </small><span><i class="fa-solid fa-circle-info"></i></span>-->
+        <!--                            <p>HUDSON Men's Blake Slim Straight Leg Twill Pant</p>-->
+        <!--                            <h5><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<span>560</span></h5>-->
+        <!--                            <p>Punjab,Lahore</p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </a>-->
+        <!--            </li>-->
+        <!--            <li class="product">-->
+        <!--                <a href="#gay" class="product-link">-->
+        <!--                    <div class="product-container">-->
+        <!--                        <div class="picture-container">-->
+        <!--                            <div class="picture">-->
+        <!--                                <img src="trouser.webp" alt="Trouser">-->
+        <!--                            </div>-->
+        <!--                            <div class="like">-->
+        <!--                                <button>-->
+        <!--                                    <i class="fa-regular fa-heart"></i>-->
+        <!--                                </button>-->
+
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                        <div class="details">-->
+        <!--                            <small>-->
+        <!--                                Sponsored-->
+        <!--                            </small><span><i class="fa-solid fa-circle-info"></i></span>-->
+        <!--                            <p>HUDSON Men's Blake Slim Straight Leg Twill Pant</p>-->
+        <!--                            <h5><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<span>560</span></h5>-->
+        <!--                            <p>Punjab,Lahore</p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </a>-->
+        <!--            </li>-->
+        <!--            <li class="product">-->
+        <!--                <a href="#gay" class="product-link">-->
+        <!--                    <div class="product-container">-->
+        <!--                        <div class="picture-container">-->
+        <!--                            <div class="picture">-->
+        <!--                                <img src="trouser.webp" alt="Trouser">-->
+        <!--                            </div>-->
+        <!--                            <div class="like">-->
+        <!--                                <button>-->
+        <!--                                    <i class="fa-regular fa-heart"></i>-->
+        <!--                                </button>-->
+
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                        <div class="details">-->
+        <!--                            <small>-->
+        <!--                                Sponsored-->
+        <!--                            </small><span><i class="fa-solid fa-circle-info"></i></span>-->
+        <!--                            <p>HUDSON Men's Blake Slim Straight Leg Twill Pant</p>-->
+        <!--                            <h5><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<span>560</span></h5>-->
+        <!--                            <p>Punjab,Lahore</p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </a>-->
+        <!--            </li>-->
+        <!--            <li class="product">-->
+        <!--                <a href="#gay" class="product-link">-->
+        <!--                    <div class="product-container">-->
+        <!--                        <div class="picture-container">-->
+        <!--                            <div class="picture">-->
+        <!--                                <img src="trouser.webp" alt="Trouser">-->
+        <!--                            </div>-->
+        <!--                            <div class="like">-->
+        <!--                                <button>-->
+        <!--                                    <i class="fa-regular fa-heart"></i>-->
+        <!--                                </button>-->
+
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                        <div class="details">-->
+        <!--                            <small>-->
+        <!--                                Sponsored-->
+        <!--                            </small><span><i class="fa-solid fa-circle-info"></i></span>-->
+        <!--                            <p>HUDSON Men's Blake Slim Straight Leg Twill Pant</p>-->
+        <!--                            <h5><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<span>560</span></h5>-->
+        <!--                            <p>Punjab,Lahore</p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </a>-->
+        <!--            </li>-->
+        <!--            <li class="product">-->
+        <!--                <a href="#gay" class="product-link">-->
+        <!--                    <div class="product-container">-->
+        <!--                        <div class="picture-container">-->
+        <!--                            <div class="picture">-->
+        <!--                                <img src="trouser.webp" alt="Trouser">-->
+        <!--                            </div>-->
+        <!--                            <div class="like">-->
+        <!--                                <button>-->
+        <!--                                    <i class="fa-regular fa-heart"></i>-->
+        <!--                                </button>-->
+
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                        <div class="details">-->
+        <!--                            <small>-->
+        <!--                                Sponsored-->
+        <!--                            </small><span><i class="fa-solid fa-circle-info"></i></span>-->
+        <!--                            <p>HUDSON Men's Blake Slim Straight Leg Twill Pant</p>-->
+        <!--                            <h5><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<span>560</span></h5>-->
+        <!--                            <p>Punjab,Lahore</p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </a>-->
+        <!--            </li>-->
+        <!--            <li class="product">-->
+        <!--                <a href="#gay" class="product-link">-->
+        <!--                    <div class="product-container">-->
+        <!--                        <div class="picture-container">-->
+        <!--                            <div class="picture">-->
+        <!--                                <img src="trouser.webp" alt="Trouser">-->
+        <!--                            </div>-->
+        <!--                            <div class="like">-->
+        <!--                                <button>-->
+        <!--                                    <i class="fa-regular fa-heart"></i>-->
+        <!--                                </button>-->
+
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                        <div class="details">-->
+        <!--                            <small>-->
+        <!--                                Sponsored-->
+        <!--                            </small><span><i class="fa-solid fa-circle-info"></i></span>-->
+        <!--                            <p>HUDSON Men's Blake Slim Straight Leg Twill Pant</p>-->
+        <!--                            <h5><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<span>560</span></h5>-->
+        <!--                            <p>Punjab,Lahore</p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </a>-->
+        <!--            </li>-->
+        <!--        </ul>-->
+    </div>
+</div>
+<div class="footer">
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>About</h6>
+                    <p class="text-justify" style="font-family: 'Poppins',sans-serif;">College Bazzar is the India's largest student community based
+                        marketplace for all the needy students. We gather the essentials and distribute them in a
+                        cheap and reasonable price through our all purpose college bazaar portal. So what you are
+                        waiting for, just sell some of your unused essentials and be a part of the college bazzar
+                        family. Feel free to smash the contact button to reach us.</p>
+                    <h3 style="font-family: 'Itim',cursive;">Happy Shoping!</h3>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Shirts</a></li>
+                        <li><a href="#">Backpacks</a></li>
+                        <li><a href="#">Bicycle</a></li>
+                        <li><a href="#">Bluetooth Earphones</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Contribute</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Donation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container bottom">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by
+                        <a href="#" style="color: dfdde189;">College Bazaar</a>.
+                    </p>
+                    <small style="margin-top: 1rem;">Developed & Coded By Team <b>BtechWala</b></small>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+
+</html>

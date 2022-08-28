@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+            href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAA/4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAAAAAAQEAAAAAAQAAAQAAAAAAAQAAAQAAAAEAAAEBAQEBAQEAAAEAAQAAAQEAAAAAAAAAAQEAAAAAAAEAAAAAAAAAAAAAAAABAAEBAQEBAQEBAQEBAQAAAAABAAAAAQAAAAEAAAEAAAEAAQAAAAEAAAABAAAAAQAAAAEBAQEBAQEBAQEBAQEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAAEAAAEBAQEBAQEBAQEBAQEBAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAABAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOfzAADb7QAA2A0AAGfzAADv/wAAQAMAAN3bAABd3QAAwAEAAN3dAADd3gAAwAAAAN//AADf/wAAH/8AAP//AAA="
+            rel="icon" type="image/x-icon"/>
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+          integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>College Bazar</title>
+</head>
+
+<body>
+<nav id="navbar">
+    <a id="logo" href="/">
+        <img src="/img/logo.png" alt="Logo" height="100">
+        <h3 id="logo-text">College Bazaar</h3>
+    </a>
+    <form action="/search" id="search-box">
+        <input id="search-input" name="query" type="search" placeholder="Search...">
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+    <div id="nav-links">
+        <a href="/logout">Log Out</a>
+        <a href="/sell">Sell Item</a>
+    </div>
+</nav>
+<!--<header>-->
+<!--    <div class="container">-->
+<!--        <div class="logo">-->
+<!--            <a href="/"><img src="/img/logo.png" alt="logo"></a>-->
+<!--        </div>-->
+<!--        <div class="heading">-->
+<!--            <h1>College Bazaar</h1>-->
+<!--        </div>-->
+<!--        <form action="search" class="searchBox">-->
+<!--            <input class="searchInput" type="text" name="" placeholder="Search">-->
+<!--            <button class="searchButton" type="submit" href="#">-->
+<!--                <i class="fa-solid fa-magnifying-glass"></i>-->
+<!--            </button>-->
+<!--        </form>-->
+<!--        <div class="logout">-->
+<!--            <a href="/logout">-->
+<!--                <button class="BUTTON">-->
+<!--                    Log Out-->
+<!--                </button>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="sell">-->
+<!--            <a href="/sell">-->
+<!--                <button class="button">-->
+<!--                    Sell Item-->
+<!--                </button>-->
+<!--            </a>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
+<table id="users" class="admin-top">
+    <tr>
+        <th><a href="/admin/approve">Approve</a></th>
+        <th><a href="/admin/users">Users</a></th>
+        <th><a href="/admin/products">Products</a></th>
+    </tr>
+</table>
+<% if(locals.mode) switch (mode){
+case 'users': {
+%>
+    <table id="users">
+        <tr>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Ban</th>
+        </tr>
+        <% for(var i = 0; i < users.length; i++) { %>
+            <tr>
+                <td><%= users[i].name %></td>
+                <td><%= users[i].email %></td>
+                <td>
+                    <% if(!users[i].blacklist){ %>
+                        <a href="?id=<%= users[i].email %>&ban=1">Ban</a>
+                    <% }else { %>
+                        <a href="?id=<%= users[i].email %>&ban=0">UnBan</a>
+                    <% } %>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+
+<% break}
+case "products": {
+%>
+    <table id="users">
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Owner</th>
+            <th>Delete</th>
+        </tr>
+        <% for(var i = 0; i < products.length; i++) { %>
+            <tr>
+                <td><%= products[i].id %></td>
+                <td><%= products[i].name %></td>
+                <td><%= products[i].owner %></td>
+                <td>
+                        <a href="/admin/approve?id=<%= products[i].id %>&approve=0">Delete</a>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+
+<% break}
+case "approve": {
+%>
+    <center><h1 id="admin-header">Waiting for approval</h1></center>
+
+<% } %>
+<div class="list">
+    <ul class="listorder">
+        <% for(var i = 0; i < products.length; i++){ %>
+            <li class="product">
+                <a href="#gay" class="product-link">
+                    <div class="product-container">
+                        <div class="picture-container">
+                            <div class="picture">
+
+                                <img src="/product/img/<%= products[i].id %>" alt="bottle">
+                            </div>
+                            <div class="like">
+                                <button>
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <small>
+                                Sponsored
+                            </small><span><i class="fa-solid fa-circle-info"></i></span>
+                            <p><%= products[i].name %></p>
+                            <h5>
+                                <i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<span><%= products[i].price %></span>
+                            </h5>
+                            <p><%= products[i].desc %></p>
+                            <a href="?id=<%= products[i].id %>&approve=1">Yes</a><a
+                                    href="?id=<%= products[i].id %>&approve=0">No</a>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        <% } %>
+    </ul>
+</div>
+<% } %>
+<div class="footer">
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>About</h6>
+                    <p class="text-justify" style="font-family: 'Poppins',sans-serif;">College Bazzar is the India's largest student community based
+                        marketplace for all the needy students. We gather the essentials and distribute them in a
+                        cheap and reasonable price through our all purpose college bazaar portal. So what you are
+                        waiting for, just sell some of your unused essentials and be a part of the college bazzar
+                        family. Feel free to smash the contact button to reach us.</p>
+                    <h3 style="font-family: 'Itim',cursive;">Happy Shoping!</h3>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Categories</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Books</a></li>
+                        <li><a href="#">Shirts</a></li>
+                        <li><a href="#">Backpacks</a></li>
+                        <li><a href="#">Bicycle</a></li>
+                        <li><a href="#">Bluetooth Earphones</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs-6 col-md-3">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Contribute</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Donation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container bottom">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by
+                        <a href="#" style="color: dfdde189;">College Bazaar</a>.
+                    </p>
+                    <small style="margin-top: 1rem;">Developed & Coded By Team <b>BtechWala</b></small>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="social-icons">
+                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
