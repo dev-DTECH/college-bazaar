@@ -23,13 +23,15 @@ router.get('/', function (req, res){
                 console.log(data)
 
                 res.render('search', {products: data, session: req.session})
-                fav_category=data[0].category
-                console.log(data[0].category)
-                db.query(`update user set fav_category = '${data[0].category}' where email = '${req.session.user_id}'`, function (err, data) {
-                    if (err) {
-                        console.error(err);
-                    }
-                })
+                if(data[0]){
+                    fav_category=data[0].category
+                    console.log(data[0].category)
+                    db.query(`update user set fav_category = '${data[0].category}' where email = '${req.session.user_id}'`, function (err, data) {
+                        if (err) {
+                            console.error(err);
+                        }
+                    })
+                }
             })
 
         }
