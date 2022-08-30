@@ -13,15 +13,29 @@ router.get('/', function(req, res, next) {
                 console.error(err);
             }
             else {
+                console.log(data[0].fav_category);
+                if(data[0].fav_category){
+                    database.query(`select * from product where approved = 1 and category = '${data[0].fav_category}' limit 10;`, function (err, data) {
+                        if (err) {
+                            console.error(err);
+                        } else
+
+                            res.render('home', {products: data, session: req.session})
+
+                    })
+                }
+                else {
+                    database.query(`select * from product where approved = 1 limit 10;`, function (err, data) {
+                        if (err) {
+                            console.error(err);
+                        } else
+
+                            res.render('home', {products: data, session: req.session})
+
+                    })
+                }
 
 
-                database.query(`select * from product where approved = 1 and category = '${data[0].fav_category}' limit 10;`, function (err, data) {
-                    if (err) {
-                        console.error(err);
-                    } else
-                        res.render('home', {products: data, session: req.session})
-
-                })
             }
         })
 

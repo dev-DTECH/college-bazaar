@@ -204,12 +204,12 @@ header {
     box-sizing: border-box;
     padding: 20px;
     margin-left: 15px;
-    height: 40rem;
+    min-height: 40rem;
     display: flex;
     justify-content: space-evenly;
     gap: 2.5rem;
     flex-wrap: wrap;
-
+    height: max-content;
 }
 
 .product {
